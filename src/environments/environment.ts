@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  API_URL: 'https://localhost:4201/api/vCard',
+  API_URL: 'https://localhost:4201/api/vCard'
 };
 
 /*
