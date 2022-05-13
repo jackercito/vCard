@@ -1,20 +1,28 @@
 pipeline {
   agent any
   stages {
-      stage('Build') {
-          steps {
-              echo 'Building..'
-          }
+    stage('Install') {
+      steps {
+        sh 'npm i --force'
       }
-      stage('Test') {
-          steps {
-              echo 'Testing..'
-          }
+    }
+
+    stage('Build Produccion') {
+      when {
+        branch 'main'
       }
-      stage('Deploy') {
-          steps {
-              echo 'Deploying....'
-          }
+      steps {
+        sh 'ng build -c production'
       }
+    }
+
+    stage('Build Preproduccion') {
+      when {
+        branch 'pre-produccion'
+      }
+      steps {
+        sh 'ng build -c preproduction'
+      }
+    }
   }
 }
