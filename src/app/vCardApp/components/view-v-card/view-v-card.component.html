@@ -27,7 +27,10 @@
         <div class="example-button-row">
           <div class="example-flex-container">
             <div class="example-button-container">
-              <button mat-fab aria-label="Example icon-button with a heart icon" (click)="descargarVCard()">
+              <button mat-fab
+                      id="downloadButtonFunction"
+                      vcdDownloadVCard
+                      [generateVCardFunction]="generateVCardOnTheFly">
                 <mat-icon>download</mat-icon>
               </button>
             </div>
@@ -37,9 +40,9 @@
               </a>
             </div>
             <div class="example-button-container">
-                <a mat-fab aria-label="Example icon button with a plus one icon" href="mailto:{{vCard.correo}}">
-                  <mat-icon>mail</mat-icon>
-                </a>
+              <a mat-fab aria-label="Example icon button with a plus one icon" href="mailto:{{vCard.correo}}">
+                <mat-icon>mail</mat-icon>
+              </a>
             </div>
           </div>
         </div>
@@ -47,6 +50,3 @@
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
-
-
-

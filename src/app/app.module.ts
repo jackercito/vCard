@@ -12,6 +12,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
+import { NgxVcardModule } from "ngx-vcard";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxVcardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

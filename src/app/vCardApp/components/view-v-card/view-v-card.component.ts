@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { VCardService } from '../../services/v-card.service';
-import { vCard } from '../../models/vCard.model';
+import { vCardModel } from '../../models/vCard.model';
+
+import { VCard } from "ngx-vcard";
+
 
 @Component({
   selector: 'app-view-v-card',
@@ -11,7 +14,7 @@ import { vCard } from '../../models/vCard.model';
 })
 export class ViewVCardComponent implements OnInit {
   vCardSubscription: Subscription | undefined;
-  vCard: vCard | undefined
+  vCard!: vCardModel.vCardObject;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +26,24 @@ export class ViewVCardComponent implements OnInit {
     this._getVCard()
   }
 
-  descargarVCard() {
-  }
+  public generateVCardOnTheFly = (): VCard => {
+    if (this.vCard) {
+      // TODO: Generate the VCard before Download
+      return {
+        name: {
+          firstNames: this.removeAccents(this.vCard.nombre),
+          lastNames: `${this.removeAccents(this.vCard.primer_apellido)} ${this.removeAccents(this.vCard.segundo_apellido)}`
+        },
+        organization: "PACISA",
+        telephone: [this.vCard.movil],
+        email: [this.vCard.correo],
+        title: this.vCard.puesto,
+        url: 'https://pacisa.es'
+      };
+    } else {
+      return {}
+    }
+  };
 
   private _getVCard() {
     const id = this.route.snapshot.params['id']
@@ -33,4 +52,8 @@ export class ViewVCardComponent implements OnInit {
       error => console.warn("Error: ", error)
     )
   }
+
+  private removeAccents = (str: string) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } 
 }

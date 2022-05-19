@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { vCard } from './../models/vCard.model'
+import { vCardModel } from './../models/vCard.model'
 
 import { environment } from './../../../environments/environment'
 
@@ -14,8 +14,8 @@ export class VCardService {
 
   constructor(private http: HttpClient) { }
 
-  getVCard$(id: string): Observable<vCard> {
+  getVCard$(id: string): Observable<vCardModel.vCardObject> {
     return this.http
-      .get<vCard>(`${environment.API_URL}/vCard/vCard?id=${encodeURIComponent(id)}`)
+      .get<vCardModel.vCardObject>(`${environment.API_URL}/vCard/vCard?id=${encodeURIComponent(id)}`)
   }
 }
