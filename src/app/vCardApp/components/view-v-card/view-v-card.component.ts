@@ -23,11 +23,14 @@ export class ViewVCardComponent implements OnInit {
     this._getVCard()
   }
 
+  descargarVCard() {
+  }
+
   private _getVCard() {
     const id = this.route.snapshot.params['id']
     this.vCardSubscription = this.apiVCard.getVCard$(id).subscribe(
-      data => { this.vCard = data },
-      error => { console.warn("Error: ", error) }
+      data => this.vCard = data,
+      error => console.warn("Error: ", error)
     )
   }
 }

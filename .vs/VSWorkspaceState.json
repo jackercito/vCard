@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\vCardApp",
+    "\\src\\app\\vCardApp\\components",
+    "\\src\\app\\vCardApp\\components\\view-v-card",
+    "\\src\\app\\vCardApp\\models",
+    "\\src\\app\\vCardApp\\services",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\src\\app\\app.module.ts",
+  "PreviewInSolutionExplorer": false
+}
