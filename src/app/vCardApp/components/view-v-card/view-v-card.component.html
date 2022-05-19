@@ -30,6 +30,7 @@
               <button mat-fab
                       id="downloadButtonFunction"
                       vcdDownloadVCard
+                      [encoding]="vCardEncoding.utf8"
                       [generateVCardFunction]="generateVCardOnTheFly">
                 <mat-icon>download</mat-icon>
               </button>

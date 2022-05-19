@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { VCardService } from '../../services/v-card.service';
 import { vCardModel } from '../../models/vCard.model';
 
-import { VCard } from "ngx-vcard";
+import { VCard, VCardEncoding } from "ngx-vcard";
 
 
 @Component({
@@ -26,6 +26,8 @@ export class ViewVCardComponent implements OnInit {
     this._getVCard()
   }
 
+  public vCardEncoding: typeof VCardEncoding = VCardEncoding;
+
   public generateVCardOnTheFly = (): VCard => {
     if (this.vCard) {
       // TODO: Generate the VCard before Download
@@ -35,7 +37,10 @@ export class ViewVCardComponent implements OnInit {
           lastNames: `${this.removeAccents(this.vCard.primer_apellido)} ${this.removeAccents(this.vCard.segundo_apellido)}`
         },
         organization: "PACISA",
-        telephone: [this.vCard.movil],
+        telephone: [{
+          value: this.vCard.movil,
+          param: { type: 'work'}
+        }],
         email: [this.vCard.correo],
         title: this.vCard.puesto,
         url: 'https://pacisa.es'
@@ -54,6 +59,7 @@ export class ViewVCardComponent implements OnInit {
   }
 
   private removeAccents = (str: string) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return str;
+    //return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   } 
 }
