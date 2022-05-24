@@ -16,7 +16,7 @@
         <div mat-line>{{vCard.correo}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item role="listitem">
+      <mat-list-item role="listitem" *ngIf="vCard.movil">
         <mat-icon aria-hidden="false" aria-label="phone icon">phone</mat-icon>
         <div mat-line>{{vCard.movil}}</div>
       </mat-list-item>
@@ -35,7 +35,7 @@
                 <mat-icon>download</mat-icon>
               </button>
             </div>
-            <div class="example-button-container">
+            <div class="example-button-container"  *ngIf="vCard.movil">
               <a mat-fab aria-label="Example icon button with a plus one icon" href="tel:{{vCard.movil}}">
                 <mat-icon>phone</mat-icon>
               </a>
@@ -43,6 +43,11 @@
             <div class="example-button-container">
               <a mat-fab aria-label="Example icon button with a plus one icon" href="mailto:{{vCard.correo}}">
                 <mat-icon>mail</mat-icon>
+              </a>
+            </div>
+            <div class="example-button-container">
+              <a mat-fab aria-label="Example icon button with a plus one icon" href="https://pacisa.es">
+                <mat-icon>language</mat-icon>
               </a>
             </div>
           </div>

@@ -10,6 +10,6 @@
     "\\src\\app\\vCardApp\\services",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\vCardApp\\components\\view-v-card\\view-v-card.component.sass",
   "PreviewInSolutionExplorer": false
 }

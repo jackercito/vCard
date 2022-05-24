@@ -33,8 +33,8 @@ export class ViewVCardComponent implements OnInit {
       // TODO: Generate the VCard before Download
       return {
         name: {
-          firstNames: this.removeAccents(this.vCard.nombre),
-          lastNames: `${this.removeAccents(this.vCard.primer_apellido)} ${this.removeAccents(this.vCard.segundo_apellido)}`
+          firstNames: this.vCard.nombre,
+          lastNames: `${this.vCard.primer_apellido} ${this.vCard.segundo_apellido}`
         },
         organization: "PACISA",
         telephone: [{
@@ -43,7 +43,7 @@ export class ViewVCardComponent implements OnInit {
         }],
         email: [this.vCard.correo],
         title: this.vCard.puesto,
-        url: 'https://pacisa.es'
+        url: 'https://pacisa.es' 
       };
     } else {
       return {}
@@ -54,7 +54,7 @@ export class ViewVCardComponent implements OnInit {
     const id = this.route.snapshot.params['id']
     this.vCardSubscription = this.apiVCard.getVCard$(id).subscribe(
       data => this.vCard = data,
-      error => console.warn("Error: ", error)
+      error => console.warn("Error")
     )
   }
 
