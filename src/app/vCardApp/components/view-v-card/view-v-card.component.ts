@@ -10,7 +10,7 @@ import { VCard, VCardEncoding } from "ngx-vcard";
 @Component({
   selector: 'app-view-v-card',
   templateUrl: './view-v-card.component.html',
-  styleUrls: ['./view-v-card.component.sass']
+  styleUrls: ['./view-v-card.component.scss']
 })
 export class ViewVCardComponent implements OnInit {
   vCardSubscription: Subscription | undefined;
